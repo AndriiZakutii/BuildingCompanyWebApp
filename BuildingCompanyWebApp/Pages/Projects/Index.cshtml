@@ -1,0 +1,78 @@
+﻿@page
+@model BuildingCompanyWebApp.Pages.Projects.IndexModel
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<h1>Projects</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-link border-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project[0].Cost)
+            </th>
+            <th>
+                @Html.Raw("Type")
+            </th>
+            <th>
+                @Html.Raw("Status")
+            </th>
+            <th>
+                @Html.Raw("Start (plan.)")
+            </th>
+            <th>
+                @Html.Raw("End (plan.)")
+            </th>
+            <th>
+                @Html.Raw("Start")
+            </th>
+            <th>
+                @Html.Raw("End")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Project) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectStatus.Name)
+            </td>
+            <td>
+                @Html.Raw(item.PlannedStartDate?.ToString("MM/dd/yyyy"))
+            </td>
+            <td>
+                @Html.Raw(item.PlannedEndDate?.ToString("MM/dd/yyyy"))
+            </td>
+            <td>
+                @Html.Raw(item.StartDate?.ToString("MM/dd/yyyy"))
+            </td>
+            <td>
+                @Html.Raw(item.EndDate?.ToString("MM/dd/yyyy"))
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

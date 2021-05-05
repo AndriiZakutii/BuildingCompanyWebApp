@@ -1,0 +1,72 @@
+﻿@page
+@model BuildingCompanyWebApp.Pages.Projects.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Project.Cost" class="control-label"></label>
+                <input asp-for="Project.Cost" class="form-control" />
+                <span asp-validation-for="Project.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.PlannedStartDate" class="control-label"></label>
+                <input asp-for="Project.PlannedStartDate" class="form-control" />
+                <span asp-validation-for="Project.PlannedStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.PlannedEndDate" class="control-label"></label>
+                <input asp-for="Project.PlannedEndDate" class="form-control" />
+                <span asp-validation-for="Project.PlannedEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.StartDate" class="control-label"></label>
+                <input asp-for="Project.StartDate" class="form-control" />
+                <span asp-validation-for="Project.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.EndDate" class="control-label"></label>
+                <input asp-for="Project.EndDate" class="form-control" />
+                <span asp-validation-for="Project.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.Description" class="control-label"></label>
+                <input asp-for="Project.Description" class="form-control" />
+                <span asp-validation-for="Project.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.ProjectTypeId" class="control-label"></label>
+                <select asp-for="Project.ProjectTypeId" class ="form-control" asp-items="ViewBag.ProjectTypeId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.ProjectStatusId" class="control-label"></label>
+                <select asp-for="Project.ProjectStatusId" class ="form-control" asp-items="ViewBag.ProjectStatusId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Project.Name" class="control-label"></label>
+                <input asp-for="Project.Name" class="form-control" />
+                <span asp-validation-for="Project.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

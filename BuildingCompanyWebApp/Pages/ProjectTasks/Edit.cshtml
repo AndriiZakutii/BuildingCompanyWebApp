@@ -1,0 +1,70 @@
+﻿@page
+@model BuildingCompanyWebApp.Pages.ProjectTasks.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ProjectTask</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProjectTask.Id" />
+            <div class="form-group">
+                <label asp-for="ProjectTask.ProjectId" class="control-label"></label>
+                <select asp-for="ProjectTask.ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
+                <span asp-validation-for="ProjectTask.ProjectId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectTask.TaskTypeId" class="control-label"></label>
+                <select asp-for="ProjectTask.TaskTypeId" class="form-control" asp-items="ViewBag.TaskTypeId"></select>
+                <span asp-validation-for="ProjectTask.TaskTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectTask.Cost" class="control-label"></label>
+                <input asp-for="ProjectTask.Cost" class="form-control" />
+                <span asp-validation-for="ProjectTask.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectTask.PlannedStartDatetime" class="control-label"></label>
+                <input asp-for="ProjectTask.PlannedStartDatetime" class="form-control" />
+                <span asp-validation-for="ProjectTask.PlannedStartDatetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectTask.PlannedEndDatetime" class="control-label"></label>
+                <input asp-for="ProjectTask.PlannedEndDatetime" class="form-control" />
+                <span asp-validation-for="ProjectTask.PlannedEndDatetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectTask.StartDatetime" class="control-label"></label>
+                <input asp-for="ProjectTask.StartDatetime" class="form-control" />
+                <span asp-validation-for="ProjectTask.StartDatetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectTask.EndDatetime" class="control-label"></label>
+                <input asp-for="ProjectTask.EndDatetime" class="form-control" />
+                <span asp-validation-for="ProjectTask.EndDatetime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectTask.Description" class="control-label"></label>
+                <input asp-for="ProjectTask.Description" class="form-control" />
+                <span asp-validation-for="ProjectTask.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

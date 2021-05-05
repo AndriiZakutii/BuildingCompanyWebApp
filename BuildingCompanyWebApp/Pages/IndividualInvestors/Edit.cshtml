@@ -1,0 +1,75 @@
+﻿@page
+@model BuildingCompanyWebApp.Pages.IndividualInvestors.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>IndividualInvestor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IndividualInvestor.Id" />
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.NationalityId" class="control-label"></label>
+                <select asp-for="IndividualInvestor.NationalityId" class="form-control" asp-items="ViewBag.NationalityId"></select>
+                <span asp-validation-for="IndividualInvestor.NationalityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.GenderId" class="control-label"></label>
+                <select asp-for="IndividualInvestor.GenderId" class="form-control" asp-items="ViewBag.GenderId"></select>
+                <span asp-validation-for="IndividualInvestor.GenderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.Name" class="control-label"></label>
+                <input asp-for="IndividualInvestor.Name" class="form-control" />
+                <span asp-validation-for="IndividualInvestor.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.Surname" class="control-label"></label>
+                <input asp-for="IndividualInvestor.Surname" class="form-control" />
+                <span asp-validation-for="IndividualInvestor.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.BirthDate" class="control-label"></label>
+                <input asp-for="IndividualInvestor.BirthDate" class="form-control" />
+                <span asp-validation-for="IndividualInvestor.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.PassportfExpireDate" class="control-label"></label>
+                <input asp-for="IndividualInvestor.PassportfExpireDate" class="form-control" />
+                <span asp-validation-for="IndividualInvestor.PassportfExpireDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.PassportNumber" class="control-label"></label>
+                <input asp-for="IndividualInvestor.PassportNumber" class="form-control" />
+                <span asp-validation-for="IndividualInvestor.PassportNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.PassportAuthority" class="control-label"></label>
+                <input asp-for="IndividualInvestor.PassportAuthority" class="form-control" />
+                <span asp-validation-for="IndividualInvestor.PassportAuthority" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndividualInvestor.PassportIssueDate" class="control-label"></label>
+                <input asp-for="IndividualInvestor.PassportIssueDate" class="form-control" />
+                <span asp-validation-for="IndividualInvestor.PassportIssueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

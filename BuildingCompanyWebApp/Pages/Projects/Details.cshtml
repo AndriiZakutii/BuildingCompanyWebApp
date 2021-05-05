@@ -1,0 +1,208 @@
+﻿@page
+@model BuildingCompanyWebApp.Pages.Projects.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Project details</h1>
+
+<div>
+    <h4>General</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Project.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Project.Cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.Cost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.Raw("Type")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.ProjectType.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.Raw("Status")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.ProjectStatus.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Project.PlannedStartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.PlannedStartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Project.PlannedEndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.PlannedEndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Project.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Project.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.EndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Project.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Project.Description)
+        </dd>
+    </dl>
+</div>
+
+<h4>Tasks</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Raw("TaskType")
+            </th>
+            <th>
+                @Html.Raw("Description")
+            </th>
+            <th>
+                @Html.Raw("Cost")
+            </th>
+            <th>
+                @Html.Raw("Start (plan.)")
+            </th>
+            <th>
+                @Html.Raw("End (plan.)")
+            </th>
+            <th>
+                @Html.Raw("Start")
+            </th>
+            <th>
+                @Html.Raw("End")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model.Project.ProjectTasks)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(task.TaskType?.Name)
+                </td>
+                <td>
+                    @Html.Raw(task.Description)
+                </td>
+                <td>
+                    @Html.Raw(task.Cost)
+                </td>
+                <td>
+                    @Html.Raw(task.PlannedStartDatetime)
+                </td>
+                <td>
+                    @Html.Raw(task.PlannedEndDatetime)
+                </td>
+                <td>
+                    @Html.Raw(task.StartDatetime)
+                </td>
+                <td>
+                    @Html.Raw(task.EndDatetime)
+                </td>
+                <td>
+                    <a asp-page="/ProjectTasks/Edit" asp-route-id="@task.Id">Edit</a> |
+                    <a asp-page="/ProjectTasks/Details" asp-route-id="@task.Id">Details</a> |
+                    <a asp-page="/ProjectTasks/Delete" asp-route-id="@task.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Employees</h4>
+<br />
+
+@foreach (var task in Model.Project.ProjectTasks)
+{
+    <h5>@Html.Raw(task.TaskType.Name)</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.Raw("Name")
+                </th>
+                <th>
+                    @Html.Raw("Surname")
+                </th>
+                <th>
+                    @Html.Raw("Age")
+                </th>
+                <th>
+                    @Html.Raw("Salary")
+                </th>
+                <th>
+                    @Html.Raw("Department")
+                </th>
+                <th>
+                    @Html.Raw("EmployeePosition")
+                </th>
+                <th>
+                    @Html.Raw("Gender")
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employment in task.Employments)
+            {
+                <tr>
+                    <td>
+                        @Html.Raw(employment.Employee.Name)
+                    </td>
+                    <td>
+                        @Html.Raw(employment.Employee.Surname)
+                    </td>
+                    <td>
+                        @Html.Raw(employment.Employee.Age)
+                    </td>
+                    <td>
+                        @Html.Raw(employment.Employee.Salary)
+                    </td>
+                    <td>
+                        @Html.Raw(employment.Employee.Department.Name)
+                    </td>
+                    <td>
+                        @Html.Raw(employment.Employee.EmployeePosition.Name)
+                    </td>
+                    <td>
+                        @Html.Raw(employment.Employee.Gender.Name)
+                    </td>
+                    <td>
+                        <a asp-page="Employments/Edit" asp-route-id="@employment.Id">Edit</a> |
+                        <a asp-page="Employments/Details" asp-route-id="@employment.Id">Details</a> |
+                        <a asp-page="Employments/Delete" asp-route-id="@employment.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+}
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Project.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
