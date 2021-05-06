@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using BuildingCompanyWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BuildingCompanyWebApp.Pages.Employments
 {
@@ -20,9 +21,9 @@ namespace BuildingCompanyWebApp.Pages.Employments
 
         public IActionResult OnGet()
         {
-        ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id");
-        ViewData["RoleId"] = new SelectList(_context.EmployeeRoles, "Id", "Id");
-        ViewData["TaskId"] = new SelectList(_context.ProjectTasks, "Id", "Id");
+            ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Name");
+            ViewData["RoleId"] = new SelectList(_context.EmployeeRoles, "Id", "Name");
+            ViewData["TaskId"] = new SelectList(_context.ProjectTasks.Where(task => ((Project)PageDataBuffer.PageData["Project"]).ProjectTasks.Contains(task)).Include(e => e.TaskType), "Id", "TaskType.Name");
             return Page();
         }
 
@@ -37,6 +38,7 @@ namespace BuildingCompanyWebApp.Pages.Employments
                 return Page();
             }
 
+            Employment.Id = _context.Employments.Max(e => e.Id) + 1;
             _context.Employments.Add(Employment);
             await _context.SaveChangesAsync();
 

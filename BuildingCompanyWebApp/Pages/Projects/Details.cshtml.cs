@@ -29,8 +29,10 @@ namespace BuildingCompanyWebApp.Pages.Projects
 
             Project = await _context.Projects
                 .Include(p => p.ProjectStatus)
-                .Include(p => p.ProjectTasks)
-                .ThenInclude(c => c.TaskType)
+                .Include(p => p.ProjectTasks).ThenInclude(c => c.Employments).ThenInclude(c => c.Employee).ThenInclude(c => c.Department)
+                .Include(p => p.ProjectTasks).ThenInclude(c => c.Employments).ThenInclude(c => c.Employee).ThenInclude(c => c.EmployeePosition)
+                .Include(p => p.ProjectTasks).ThenInclude(c => c.Employments).ThenInclude(c => c.Employee).ThenInclude(c => c.Gender)
+                .Include(p => p.ProjectTasks).ThenInclude(c => c.TaskType)
                 .Include(p => p.ProjectType).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Project == null)

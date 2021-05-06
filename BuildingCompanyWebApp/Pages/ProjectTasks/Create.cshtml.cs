@@ -20,8 +20,8 @@ namespace BuildingCompanyWebApp.Pages.ProjectTasks
 
         public IActionResult OnGet()
         {
-        ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id");
-        ViewData["TaskTypeId"] = new SelectList(_context.TaskTypes, "Id", "Id");
+        ViewData["ProjectId"] = new SelectList(_context.Projects.Where(p => p.Id == ((Project)PageDataBuffer.PageData["Project"]).Id), "Id", "Name");
+        ViewData["TaskTypeId"] = new SelectList(_context.TaskTypes, "Id", "Name");
             return Page();
         }
 
