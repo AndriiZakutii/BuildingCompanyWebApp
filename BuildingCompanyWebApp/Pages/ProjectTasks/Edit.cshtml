@@ -15,12 +15,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProjectTask.Id" />
             <div class="form-group">
-                <label asp-for="ProjectTask.ProjectId" class="control-label"></label>
+                <label asp-for="ProjectTask.ProjectId" class="control-label">Project</label>
                 <select asp-for="ProjectTask.ProjectId" class="form-control" asp-items="ViewBag.ProjectId"></select>
                 <span asp-validation-for="ProjectTask.ProjectId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectTask.TaskTypeId" class="control-label"></label>
+                <label asp-for="ProjectTask.TaskTypeId" class="control-label">Project type</label>
                 <select asp-for="ProjectTask.TaskTypeId" class="form-control" asp-items="ViewBag.TaskTypeId"></select>
                 <span asp-validation-for="ProjectTask.TaskTypeId" class="text-danger"></span>
             </div>
@@ -30,22 +30,22 @@
                 <span asp-validation-for="ProjectTask.Cost" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectTask.PlannedStartDatetime" class="control-label"></label>
+                <label asp-for="ProjectTask.PlannedStartDatetime" class="control-label">Start date (planned)</label>
                 <input asp-for="ProjectTask.PlannedStartDatetime" class="form-control" />
                 <span asp-validation-for="ProjectTask.PlannedStartDatetime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectTask.PlannedEndDatetime" class="control-label"></label>
+                <label asp-for="ProjectTask.PlannedEndDatetime" class="control-label">End date (planned)</label>
                 <input asp-for="ProjectTask.PlannedEndDatetime" class="form-control" />
                 <span asp-validation-for="ProjectTask.PlannedEndDatetime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectTask.StartDatetime" class="control-label"></label>
+                <label asp-for="ProjectTask.StartDatetime" class="control-label">Start date</label>
                 <input asp-for="ProjectTask.StartDatetime" class="form-control" />
                 <span asp-validation-for="ProjectTask.StartDatetime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ProjectTask.EndDatetime" class="control-label"></label>
+                <label asp-for="ProjectTask.EndDatetime" class="control-label">End date</label>
                 <input asp-for="ProjectTask.EndDatetime" class="form-control" />
                 <span asp-validation-for="ProjectTask.EndDatetime" class="text-danger"></span>
             </div>
@@ -62,7 +62,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/Projects/Details" asp-route-id=@Services.PageNavigator.CurrentId>Back To Details</a>
 </div>
 
 @section Scripts {

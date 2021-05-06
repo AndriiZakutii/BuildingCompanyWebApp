@@ -37,8 +37,8 @@ namespace BuildingCompanyWebApp.Pages.ProjectTasks
             {
                 return NotFound();
             }
-           ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id");
-           ViewData["TaskTypeId"] = new SelectList(_context.TaskTypes, "Id", "Id");
+           ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name");
+           ViewData["TaskTypeId"] = new SelectList(_context.TaskTypes, "Id", "Name");
             return Page();
         }
 
@@ -69,7 +69,7 @@ namespace BuildingCompanyWebApp.Pages.ProjectTasks
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Projects/Details", new { id = Services.PageNavigator.CurrentId });
         }
 
         private bool ProjectTaskExists(int id)

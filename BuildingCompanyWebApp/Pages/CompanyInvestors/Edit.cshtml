@@ -20,7 +20,7 @@
                 <span asp-validation-for="CompanyInvestor.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CompanyInvestor.CompanyTypeId" class="control-label"></label>
+                <label asp-for="CompanyInvestor.CompanyTypeId" class="control-label">Company type</label>
                 <select asp-for="CompanyInvestor.CompanyTypeId" class="form-control" asp-items="ViewBag.CompanyTypeId"></select>
                 <span asp-validation-for="CompanyInvestor.CompanyTypeId" class="text-danger"></span>
             </div>
@@ -35,7 +35,7 @@
                 <span asp-validation-for="CompanyInvestor.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CompanyInvestor.FoundationDatetime" class="control-label"></label>
+                <label asp-for="CompanyInvestor.FoundationDatetime" class="control-label">Foudation date</label>
                 <input asp-for="CompanyInvestor.FoundationDatetime" class="form-control" />
                 <span asp-validation-for="CompanyInvestor.FoundationDatetime" class="text-danger"></span>
             </div>

@@ -15,27 +15,27 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Employment.Id" />
             <div class="form-group">
-                <label asp-for="Employment.EmployeeId" class="control-label"></label>
+                <label asp-for="Employment.EmployeeId" class="control-label">Employee</label>
                 <select asp-for="Employment.EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
                 <span asp-validation-for="Employment.EmployeeId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employment.TaskId" class="control-label"></label>
+                <label asp-for="Employment.TaskId" class="control-label">Task</label>
                 <select asp-for="Employment.TaskId" class="form-control" asp-items="ViewBag.TaskId"></select>
                 <span asp-validation-for="Employment.TaskId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employment.RoleId" class="control-label"></label>
+                <label asp-for="Employment.RoleId" class="control-label">Role</label>
                 <select asp-for="Employment.RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
                 <span asp-validation-for="Employment.RoleId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employment.EntryDate" class="control-label"></label>
+                <label asp-for="Employment.EntryDate" class="control-label">Entry date</label>
                 <input asp-for="Employment.EntryDate" class="form-control" />
                 <span asp-validation-for="Employment.EntryDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Employment.EndDate" class="control-label"></label>
+                <label asp-for="Employment.EndDate" class="control-label">End date</label>
                 <input asp-for="Employment.EndDate" class="form-control" />
                 <span asp-validation-for="Employment.EndDate" class="text-danger"></span>
             </div>

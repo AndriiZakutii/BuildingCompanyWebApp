@@ -7,7 +7,7 @@
 
 <h1>Create</h1>
 
-<h4>ProjectTask</h4>
+<h4>Project Task</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -59,7 +59,7 @@
 </div>
 
 <div>
-    <a asp-page="Projects/Index">Back to Projects</a>
+    <a asp-page="/Projects/Details" asp-route-id=@Services.PageNavigator.CurrentId>Back To Details</a>
 </div>
 
 @section Scripts {

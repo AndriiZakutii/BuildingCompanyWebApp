@@ -54,7 +54,7 @@ namespace BuildingCompanyWebApp.Pages.ProjectTasks
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Projects/Details", new { id = Services.PageNavigator.CurrentId });
         }
     }
 }

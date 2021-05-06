@@ -13,13 +13,13 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employment.EntryDate)
+            @Html.Raw("Entry date")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Employment.EntryDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employment.EndDate)
+            @Html.Raw("End date")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Employment.EndDate)
@@ -28,19 +28,19 @@
             @Html.DisplayNameFor(model => model.Employment.Employee)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employment.Employee.Id)
+            @Html.DisplayFor(model => model.Employment.Employee.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Employment.Role)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employment.Role.Id)
+            @Html.DisplayFor(model => model.Employment.Role.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Employment.Task)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employment.Task.Id)
+            @Html.DisplayFor(model => model.Employment.Task.TaskType.Name)
         </dd>
     </dl>
     

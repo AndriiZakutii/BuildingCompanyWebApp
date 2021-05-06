@@ -70,6 +70,7 @@
 
 <h4>Tasks</h4>
 @{ Models.PageDataBuffer.PageData["Project"] = Model.Project; }
+@{ Services.PageNavigator.ChangeCurrentPage("Deatails", Model.Project.Id);}
 <p>
     <a asp-page="/ProjectTasks/Create" class="btn btn-link border-primary">Create New</a>
 </p>
@@ -135,17 +136,16 @@
     </tbody>
 </table>
 
-<h4>Employees</h4>
 <br />
-
-@{ Models.PageDataBuffer.PageData["Tasks"] = new List<Models.ProjectTask>(Model.Project.ProjectTasks); }
+<h4>Employees</h4>
+<hr />
 
 @foreach (var task in Model.Project.ProjectTasks)
 {
+    <h5>@Html.Raw(task.TaskType.Name)</h5>
     <p>
         <a asp-page="/Employments/Create" class="btn btn-link border-primary">Add</a>
     </p>
-    <h5>@Html.Raw(task.TaskType.Name)</h5>
     <table class="table">
         <thead>
             <tr>
@@ -199,9 +199,9 @@
                         @Html.Raw(employment.Employee.Gender.Name)
                     </td>
                     <td>
-                        <a asp-page="Employments/Edit" asp-route-id="@employment.Id">Edit</a> |
-                        <a asp-page="Employments/Details" asp-route-id="@employment.Id">Details</a> |
-                        <a asp-page="Employments/Delete" asp-route-id="@employment.Id">Delete</a>
+                        <a asp-page="/Employments/Edit" asp-route-id="@employment.Id">Edit</a> |
+                        <a asp-page="/Employments/Details" asp-route-id="@employment.Id">Details</a> |
+                        <a asp-page="/Employments/Delete" asp-route-id="@employment.Id">Delete</a>
                     </td>
                 </tr>
             }

@@ -15,21 +15,6 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Employee.Id" />
             <div class="form-group">
-                <label asp-for="Employee.DepartmentId" class="control-label"></label>
-                <select asp-for="Employee.DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
-                <span asp-validation-for="Employee.DepartmentId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Employee.EmployeePositionId" class="control-label"></label>
-                <select asp-for="Employee.EmployeePositionId" class="form-control" asp-items="ViewBag.EmployeePositionId"></select>
-                <span asp-validation-for="Employee.EmployeePositionId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Employee.GenderId" class="control-label"></label>
-                <select asp-for="Employee.GenderId" class="form-control" asp-items="ViewBag.GenderId"></select>
-                <span asp-validation-for="Employee.GenderId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Employee.Name" class="control-label"></label>
                 <input asp-for="Employee.Name" class="form-control" />
                 <span asp-validation-for="Employee.Name" class="text-danger"></span>
@@ -38,6 +23,21 @@
                 <label asp-for="Employee.Surname" class="control-label"></label>
                 <input asp-for="Employee.Surname" class="form-control" />
                 <span asp-validation-for="Employee.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.DepartmentId" class="control-label">Department</label>
+                <select asp-for="Employee.DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                <span asp-validation-for="Employee.DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.EmployeePositionId" class="control-label">Position</label>
+                <select asp-for="Employee.EmployeePositionId" class="form-control" asp-items="ViewBag.EmployeePositionId"></select>
+                <span asp-validation-for="Employee.EmployeePositionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee.GenderId" class="control-label">Gender</label>
+                <select asp-for="Employee.GenderId" class="form-control" asp-items="ViewBag.GenderId"></select>
+                <span asp-validation-for="Employee.GenderId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Employee.Age" class="control-label"></label>

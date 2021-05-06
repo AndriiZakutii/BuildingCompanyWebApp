@@ -11,14 +11,20 @@ namespace BuildingCompanyWebApp.Pages.Employees
 {
     public class DetailsModel : PageModel
     {
-        private readonly BuildingCompanyWebApp.Models.BuildingCompanyManagementContext _context;
+        private readonly BuildingCompanyManagementContext _context;
 
-        public DetailsModel(BuildingCompanyWebApp.Models.BuildingCompanyManagementContext context)
+        public DetailsModel(BuildingCompanyManagementContext context)
         {
             _context = context;
         }
 
         public Employee Employee { get; set; }
+
+        public IList<Employment> Employments => _context.Employments.Where(e => e.EmployeeId == Employee.Id)
+            .Include(e => e.Role)
+            .Include(e => e.Task).ThenInclude(e => e.TaskType)
+            .Include(e => e.Task).ThenInclude(e => e.Project)
+            .ToList();
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

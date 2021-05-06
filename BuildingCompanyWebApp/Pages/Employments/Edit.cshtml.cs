@@ -32,15 +32,15 @@ namespace BuildingCompanyWebApp.Pages.Employments
             Employment = await _context.Employments
                 .Include(e => e.Employee)
                 .Include(e => e.Role)
-                .Include(e => e.Task).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(e => e.Task).ThenInclude(e => e.TaskType).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Employment == null)
             {
                 return NotFound();
             }
-           ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Id");
-           ViewData["RoleId"] = new SelectList(_context.EmployeeRoles, "Id", "Id");
-           ViewData["TaskId"] = new SelectList(_context.ProjectTasks, "Id", "Id");
+           ViewData["EmployeeId"] = new SelectList(_context.Employees, "Id", "Name");
+           ViewData["RoleId"] = new SelectList(_context.EmployeeRoles, "Id", "Name");
+           ViewData["TaskId"] = new SelectList(_context.ProjectTasks.Include(e => e.TaskType), "Id", "TaskType.Name");
             return Page();
         }
 

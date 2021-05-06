@@ -5,26 +5,82 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Investors</h1>
+<br />
+<h3>Individual Investors</h3>
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="/IndividualInvestors/Create" class="btn btn-link border-primary">Add</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.Raw("Name")
+            </th>
+            <th>
+                @Html.Raw("Surname")
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Investor) {
+        @foreach (var item in Model.IndividualInvestors)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    <a asp-page="/IndividualInvestors/Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="/IndividualInvestors/Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="/IndividualInvestors/Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<h3>Company Investors</h3>
+<p>
+    <a asp-page="/CompanyInvestors/Create" class="btn btn-link border-primary">Add</a>
+</p>
+<table class="table">
+    <thead>
         <tr>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            <th>
+                @Html.Raw("Name")
+            </th>
+            <th>
+                @Html.Raw("Code")
+            </th>
+            <th>
+                @Html.Raw("Company type")
+            </th>
+            <th></th>
         </tr>
-}
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CompanyInvestors)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyType.Name)
+                </td>
+                <td>
+                    <a asp-page="/CompanyInvestors/Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="/CompanyInvestors/Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="/CompanyInvestors/Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

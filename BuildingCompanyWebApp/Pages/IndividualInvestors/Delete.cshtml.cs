@@ -11,9 +11,9 @@ namespace BuildingCompanyWebApp.Pages.IndividualInvestors
 {
     public class DeleteModel : PageModel
     {
-        private readonly BuildingCompanyWebApp.Models.BuildingCompanyManagementContext _context;
+        private readonly BuildingCompanyManagementContext _context;
 
-        public DeleteModel(BuildingCompanyWebApp.Models.BuildingCompanyManagementContext context)
+        public DeleteModel(BuildingCompanyManagementContext context)
         {
             _context = context;
         }

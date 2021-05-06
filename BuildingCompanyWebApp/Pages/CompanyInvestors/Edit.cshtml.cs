@@ -12,9 +12,9 @@ namespace BuildingCompanyWebApp.Pages.CompanyInvestors
 {
     public class EditModel : PageModel
     {
-        private readonly BuildingCompanyWebApp.Models.BuildingCompanyManagementContext _context;
+        private readonly BuildingCompanyManagementContext _context;
 
-        public EditModel(BuildingCompanyWebApp.Models.BuildingCompanyManagementContext context)
+        public EditModel(BuildingCompanyManagementContext context)
         {
             _context = context;
         }
@@ -37,8 +37,8 @@ namespace BuildingCompanyWebApp.Pages.CompanyInvestors
             {
                 return NotFound();
             }
-           ViewData["CompanyTypeId"] = new SelectList(_context.CompanyTypes, "Id", "Id");
-           ViewData["Id"] = new SelectList(_context.Investors, "Id", "Id");
+           ViewData["CompanyTypeId"] = new SelectList(_context.CompanyTypes, "Id", "Name");
+           ViewData["Id"] = new SelectList(_context.Investors, "Id", "Name");
             return Page();
         }
 

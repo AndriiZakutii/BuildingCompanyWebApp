@@ -25,31 +25,31 @@
             @Html.DisplayFor(model => model.IndividualInvestor.Surname)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IndividualInvestor.BirthDate)
+            @Html.Raw("Birth date")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IndividualInvestor.BirthDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IndividualInvestor.PassportfExpireDate)
+            @Html.Raw("Passport expire date")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IndividualInvestor.PassportfExpireDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IndividualInvestor.PassportNumber)
+            @Html.Raw("Passport no")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IndividualInvestor.PassportNumber)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IndividualInvestor.PassportAuthority)
+            @Html.Raw("Passport authority")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IndividualInvestor.PassportAuthority)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IndividualInvestor.PassportIssueDate)
+            @Html.Raw("Passport issue date")
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IndividualInvestor.PassportIssueDate)
@@ -58,19 +58,13 @@
             @Html.DisplayNameFor(model => model.IndividualInvestor.Gender)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IndividualInvestor.Gender.Id)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.IndividualInvestor.IdNavigation)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IndividualInvestor.IdNavigation.Id)
+            @Html.DisplayFor(model => model.IndividualInvestor.Gender.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IndividualInvestor.Nationality)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.IndividualInvestor.Nationality.Id)
+            @Html.DisplayFor(model => model.IndividualInvestor.Nationality.Name)
         </dd>
     </dl>
     

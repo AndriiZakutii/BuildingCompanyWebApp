@@ -12,9 +12,9 @@ namespace BuildingCompanyWebApp.Pages.IndividualInvestors
 {
     public class EditModel : PageModel
     {
-        private readonly BuildingCompanyWebApp.Models.BuildingCompanyManagementContext _context;
+        private readonly BuildingCompanyManagementContext _context;
 
-        public EditModel(BuildingCompanyWebApp.Models.BuildingCompanyManagementContext context)
+        public EditModel(BuildingCompanyManagementContext context)
         {
             _context = context;
         }
@@ -38,9 +38,10 @@ namespace BuildingCompanyWebApp.Pages.IndividualInvestors
             {
                 return NotFound();
             }
-           ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id");
-           ViewData["Id"] = new SelectList(_context.Investors, "Id", "Id");
-           ViewData["NationalityId"] = new SelectList(_context.Nationalities, "Id", "Id");
+
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name");
+            ViewData["Id"] = new SelectList(_context.Investors, "Id", "Name");
+            ViewData["NationalityId"] = new SelectList(_context.Nationalities, "Id", "Name");
             return Page();
         }
 

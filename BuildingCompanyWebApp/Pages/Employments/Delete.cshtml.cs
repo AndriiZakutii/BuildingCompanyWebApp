@@ -31,7 +31,7 @@ namespace BuildingCompanyWebApp.Pages.Employments
             Employment = await _context.Employments
                 .Include(e => e.Employee)
                 .Include(e => e.Role)
-                .Include(e => e.Task).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(e => e.Task).ThenInclude(e => e.TaskType).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Employment == null)
             {

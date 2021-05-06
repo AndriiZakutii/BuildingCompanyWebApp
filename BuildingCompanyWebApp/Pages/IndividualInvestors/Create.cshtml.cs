@@ -11,18 +11,18 @@ namespace BuildingCompanyWebApp.Pages.IndividualInvestors
 {
     public class CreateModel : PageModel
     {
-        private readonly BuildingCompanyWebApp.Models.BuildingCompanyManagementContext _context;
+        private readonly BuildingCompanyManagementContext _context;
 
-        public CreateModel(BuildingCompanyWebApp.Models.BuildingCompanyManagementContext context)
+        public CreateModel(BuildingCompanyManagementContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id");
-        ViewData["Id"] = new SelectList(_context.Investors, "Id", "Id");
-        ViewData["NationalityId"] = new SelectList(_context.Nationalities, "Id", "Id");
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Name");
+            ViewData["Id"] = new SelectList(_context.Investors, "Id", "Name");
+            ViewData["NationalityId"] = new SelectList(_context.Nationalities, "Id", "Name");
             return Page();
         }
 
@@ -37,6 +37,7 @@ namespace BuildingCompanyWebApp.Pages.IndividualInvestors
                 return Page();
             }
 
+            IndividualInvestor.Id = _context.IndividualInvestors.Max(e => e.Id) + 1;
             _context.IndividualInvestors.Add(IndividualInvestor);
             await _context.SaveChangesAsync();
 

@@ -20,8 +20,8 @@ namespace BuildingCompanyWebApp.Pages.Projects
 
         public IActionResult OnGet()
         {
-        ViewData["ProjectStatusId"] = new SelectList(_context.ProjectStatuses, "Id", "Name");
-        ViewData["ProjectTypeId"] = new SelectList(_context.ProjectTypes, "Id", "Name");
+            ViewData["ProjectStatusId"] = new SelectList(_context.ProjectStatuses, "Id", "Name");
+            ViewData["ProjectTypeId"] = new SelectList(_context.ProjectTypes, "Id", "Name");
             return Page();
         }
 
@@ -36,8 +36,7 @@ namespace BuildingCompanyWebApp.Pages.Projects
                 return Page();
             }
 
-            Project.Id = _context.Projects.Max(e => e.Id) + 1;
-
+            Project.Id = _context.Projects.Max(project => project.Id) + 1;
             _context.Projects.Add(Project);
             await _context.SaveChangesAsync();
 

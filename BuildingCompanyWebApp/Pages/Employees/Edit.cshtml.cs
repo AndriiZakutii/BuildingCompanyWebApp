@@ -12,9 +12,9 @@ namespace BuildingCompanyWebApp.Pages.Employees
 {
     public class EditModel : PageModel
     {
-        private readonly BuildingCompanyWebApp.Models.BuildingCompanyManagementContext _context;
+        private readonly BuildingCompanyManagementContext _context;
 
-        public EditModel(BuildingCompanyWebApp.Models.BuildingCompanyManagementContext context)
+        public EditModel(BuildingCompanyManagementContext context)
         {
             _context = context;
         }

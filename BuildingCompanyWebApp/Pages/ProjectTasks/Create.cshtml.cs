@@ -36,10 +36,11 @@ namespace BuildingCompanyWebApp.Pages.ProjectTasks
                 return Page();
             }
 
+            ProjectTask.Id = _context.ProjectTasks.Max(e => e.Id) + 1;
             _context.ProjectTasks.Add(ProjectTask);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Projects/Details", new {id=Services.PageNavigator.CurrentId});
         }
     }
 }

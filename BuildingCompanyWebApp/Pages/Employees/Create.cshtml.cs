@@ -37,6 +37,7 @@ namespace BuildingCompanyWebApp.Pages.Employees
                 return Page();
             }
 
+            Employee.Id = _context.Employees.Max(e => e.Id) + 1;
             _context.Employees.Add(Employee);
             await _context.SaveChangesAsync();
 
