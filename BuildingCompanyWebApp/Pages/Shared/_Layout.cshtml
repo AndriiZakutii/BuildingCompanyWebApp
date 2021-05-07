@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - BuildingCompanyWebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css">
 </head>
 <body>
     <header>
@@ -36,9 +38,12 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3" id="printJS-form">
             @RenderBody()
         </main>
+        <button class="btn btn-link border-primary" style="margin-bottom: 5px" type="button" onclick="printJS('printJS-form', 'html')">
+            Print
+        </button>
     </div>
 
     <footer class="border-top footer text-muted">

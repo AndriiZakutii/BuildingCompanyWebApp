@@ -72,7 +72,7 @@ namespace BuildingCompanyWebApp.Pages.IndividualInvestors
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Investors/Index");
         }
 
         private bool IndividualInvestorExists(int id)

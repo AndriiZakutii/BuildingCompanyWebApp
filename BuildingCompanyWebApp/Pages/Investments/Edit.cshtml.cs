@@ -39,7 +39,7 @@ namespace BuildingCompanyWebApp.Pages.Investments
                 return NotFound();
             }
            ViewData["InvestorId"] = new SelectList(_context.Investors, "Id", "Id");
-           ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id");
+           ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name");
            ViewData["TaskId"] = new SelectList(_context.ProjectTasks, "Id", "Id");
             return Page();
         }

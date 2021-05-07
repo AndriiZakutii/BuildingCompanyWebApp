@@ -55,7 +55,7 @@ namespace BuildingCompanyWebApp.Pages.Employments
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage(Services.PageNavigator.PreviousPageName, new { id = Services.PageNavigator.PreviousId });
         }
     }
 }

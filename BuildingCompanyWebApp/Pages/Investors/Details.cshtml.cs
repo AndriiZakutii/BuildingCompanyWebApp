@@ -11,9 +11,9 @@ namespace BuildingCompanyWebApp.Pages.Investors
 {
     public class DetailsModel : PageModel
     {
-        private readonly BuildingCompanyWebApp.Models.BuildingCompanyManagementContext _context;
+        private readonly BuildingCompanyManagementContext _context;
 
-        public DetailsModel(BuildingCompanyWebApp.Models.BuildingCompanyManagementContext context)
+        public DetailsModel(BuildingCompanyManagementContext context)
         {
             _context = context;
         }

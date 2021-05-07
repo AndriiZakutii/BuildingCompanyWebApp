@@ -20,6 +20,8 @@ namespace BuildingCompanyWebApp.Pages.CompanyInvestors
 
         public CompanyInvestor CompanyInvestor { get; set; }
 
+        public IList<Investment> Investments => _context.Investments.Where(e => e.InvestorId == CompanyInvestor.Id).ToList();
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)

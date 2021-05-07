@@ -8,7 +8,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>CompanyInvestor</h4>
+    <h4>Company Investor</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -43,7 +43,64 @@
         </dd>
     </dl>
 </div>
+
+
+<br />
+<h3>Investments</h3>
+<p>
+    <a asp-page="/Investments/Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Raw("Sum")
+            </th>
+            <th>
+                @Html.Raw("Date")
+            </th>
+            <th>
+                @Html.Raw("Investor")
+            </th>
+            <th>
+                @Html.Raw("Project")
+            </th>
+            <th>
+                @Html.Raw("Task")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Investments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datetime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Investor.CompanyInvestor.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Task.Id)
+                </td>
+                <td>
+                    <a asp-page="/Investments/Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="/Investments/Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="/Investments/Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.CompanyInvestor.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/Investors/Index">Back to List</a>
 </div>

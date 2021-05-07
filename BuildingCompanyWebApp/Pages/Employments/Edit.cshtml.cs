@@ -71,7 +71,7 @@ namespace BuildingCompanyWebApp.Pages.Employments
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage(Services.PageNavigator.PreviousPageName, new { id = Services.PageNavigator.PreviousId });
         }
 
         private bool EmploymentExists(int id)

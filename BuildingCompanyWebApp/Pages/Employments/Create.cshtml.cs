@@ -42,7 +42,7 @@ namespace BuildingCompanyWebApp.Pages.Employments
             _context.Employments.Add(Employment);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage(Services.PageNavigator.PreviousPageName, new { id = Services.PageNavigator.PreviousId });
         }
     }
 }

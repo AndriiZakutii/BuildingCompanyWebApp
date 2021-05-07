@@ -14,11 +14,6 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Investment.Id" class="control-label"></label>
-                <input asp-for="Investment.Id" class="form-control" />
-                <span asp-validation-for="Investment.Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Investment.InvestorId" class="control-label"></label>
                 <select asp-for="Investment.InvestorId" class ="form-control" asp-items="ViewBag.InvestorId"></select>
             </div>

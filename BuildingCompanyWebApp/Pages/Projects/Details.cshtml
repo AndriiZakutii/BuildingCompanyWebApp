@@ -70,13 +70,16 @@
 
 <h4>Tasks</h4>
 @{ Models.PageDataBuffer.PageData["Project"] = Model.Project; }
-@{ Services.PageNavigator.ChangeCurrentPage("Deatails", Model.Project.Id);}
+@{ Services.PageNavigator.ChangeCurrentPage("/Projects/Details", Model.Project.Id);}
 <p>
     <a asp-page="/ProjectTasks/Create" class="btn btn-link border-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.Raw("Id")
+            </th>
             <th>
                 @Html.Raw("TaskType")
             </th>
@@ -105,6 +108,9 @@
         @foreach (var task in Model.Project.ProjectTasks)
         {
             <tr>
+                <td>
+                    @Html.Raw(task.Id)
+                </td>
                 <td>
                     @Html.Raw(task.TaskType?.Name)
                 </td>
@@ -209,6 +215,61 @@
     </table>
     <br />
 }
+
+<br />
+<h3>Investments</h3>
+<p>
+    <a asp-page="/Investments/Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Raw("Sum")
+            </th>
+            <th>
+                @Html.Raw("Date")
+            </th>
+            <th>
+                @Html.Raw("Investor (Id)")
+            </th>
+            <th>
+                @Html.Raw("Project")
+            </th>
+            <th>
+                @Html.Raw("Task")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Project.Investments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datetime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Investor.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Task.Id)
+                </td>
+                <td>
+                    <a asp-page="/Investments/Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="/Investments/Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="/Investments/Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Project.Id">Edit</a> |

@@ -33,6 +33,8 @@ namespace BuildingCompanyWebApp.Pages.Projects
                 .Include(p => p.ProjectTasks).ThenInclude(c => c.Employments).ThenInclude(c => c.Employee).ThenInclude(c => c.EmployeePosition)
                 .Include(p => p.ProjectTasks).ThenInclude(c => c.Employments).ThenInclude(c => c.Employee).ThenInclude(c => c.Gender)
                 .Include(p => p.ProjectTasks).ThenInclude(c => c.TaskType)
+                .Include(p => p.Investments).ThenInclude(c => c.Investor)
+                .Include(p => p.Investments).ThenInclude(c => c.Project)
                 .Include(p => p.ProjectType).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Project == null)

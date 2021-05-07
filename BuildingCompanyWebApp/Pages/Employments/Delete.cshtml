@@ -5,6 +5,8 @@
     ViewData["Title"] = "Delete";
 }
 
+@{ Services.PageNavigator.ChangeCurrentPage("Employments/Delete", 0); }
+
 <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -43,10 +45,10 @@
             @Html.DisplayFor(model => model.Employment.Task.TaskType.Name)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Employment.Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <a asp-page=@Services.PageNavigator.PreviousPageName asp-route-id=@Services.PageNavigator.PreviousId>Back To Details</a>
     </form>
 </div>

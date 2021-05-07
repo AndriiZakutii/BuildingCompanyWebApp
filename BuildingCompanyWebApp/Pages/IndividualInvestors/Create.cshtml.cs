@@ -41,7 +41,7 @@ namespace BuildingCompanyWebApp.Pages.IndividualInvestors
             _context.IndividualInvestors.Add(IndividualInvestor);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Investors/Index");
         }
     }
 }

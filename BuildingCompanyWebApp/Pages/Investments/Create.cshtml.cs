@@ -21,7 +21,7 @@ namespace BuildingCompanyWebApp.Pages.Investments
         public IActionResult OnGet()
         {
         ViewData["InvestorId"] = new SelectList(_context.Investors, "Id", "Id");
-        ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Id");
+        ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name");
         ViewData["TaskId"] = new SelectList(_context.ProjectTasks, "Id", "Id");
             return Page();
         }
@@ -37,10 +37,11 @@ namespace BuildingCompanyWebApp.Pages.Investments
                 return Page();
             }
 
+            Investment.Id = _context.Investments.Max(e => e.Id) + 1;
             _context.Investments.Add(Investment);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Investors/Index");
         }
     }
 }

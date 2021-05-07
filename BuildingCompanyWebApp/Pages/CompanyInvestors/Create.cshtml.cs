@@ -40,7 +40,7 @@ namespace BuildingCompanyWebApp.Pages.CompanyInvestors
             _context.CompanyInvestors.Add(CompanyInvestor);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Investors/Index");
         }
     }
 }
