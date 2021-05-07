@@ -2,6 +2,7 @@ using BuildingCompanyWebApp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.UI;
 
 namespace BuildingCompanyWebApp
 {
@@ -25,8 +27,30 @@ namespace BuildingCompanyWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddDbContext<BuildingCompanyManagementContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BuildingCompanyManagementContext")));
+            services.AddRazorPages(options =>
+            {
+                options.Conventions.AuthorizeFolder("/CompanyInvestors");
+                options.Conventions.AuthorizeFolder("/CompanyTypes");
+                options.Conventions.AuthorizeFolder("/ConstructionObjects");
+                options.Conventions.AuthorizeFolder("/ConstructionObjectTypes");
+                options.Conventions.AuthorizeFolder("/Departments");
+                options.Conventions.AuthorizeFolder("/EmployeePositions");
+                options.Conventions.AuthorizeFolder("/EmployeeRoles");
+                options.Conventions.AuthorizeFolder("/Employees");
+                options.Conventions.AuthorizeFolder("/Employments");
+                options.Conventions.AuthorizeFolder("/Genders");
+                options.Conventions.AuthorizeFolder("/IndividualInvestors");
+                options.Conventions.AuthorizeFolder("/Investments");
+                options.Conventions.AuthorizeFolder("/Investors");
+                options.Conventions.AuthorizeFolder("/Projects");
+                options.Conventions.AuthorizeFolder("/ProjectStatuses");
+                options.Conventions.AuthorizeFolder("/ProjectTasks");
+                options.Conventions.AuthorizeFolder("/ProjectTaskTypes");
+                options.Conventions.AuthorizeFolder("/ProjectTypes");
+            });
+            services.AddDbContext<BuildingCompanyManagementContext>(options => options
+            .UseSqlServer(Configuration.GetConnectionString("BuildingCompanyManagementContext")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +72,7 @@ namespace BuildingCompanyWebApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
